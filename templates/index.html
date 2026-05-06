@@ -1,0 +1,155 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VisionGuard AI</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <div class="logo">
+        Vision<span>Guard</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Detection</a>
+        <a href="#">About</a>
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-container">
+
+<div class="content">
+
+<!-- LEFT -->
+
+<div class="left-section">
+
+    <h1>
+        AI Powered <span>Video</span><br>
+        <span>Anomaly</span> Detection
+    </h1>
+
+    <p class="description">
+        VisionGuard uses multimodal deep learning with CLIP and attention
+        mechanisms to detect abnormal activities like vehicle collisions,
+        fire accidents, fighting, and falling events in real-time
+        surveillance videos.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🚗 Collision</h3>
+            <p>Detect vehicle accidents instantly with AI monitoring.</p>
+        </div>
+
+        <div class="card">
+            <h3>🔥 Fire</h3>
+            <p>Identify dangerous fire anomalies accurately.</p>
+        </div>
+
+        <div class="card">
+            <h3>👊 Fighting</h3>
+            <p>Recognize violent activities in surveillance footage.</p>
+        </div>
+
+        <div class="card">
+            <h3>🧍 Falling</h3>
+            <p>Detect human fall incidents using smart detection.</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="right-section">
+
+<form action="/run" method="POST" enctype="multipart/form-data">
+
+<label class="upload-box">
+
+    <div class="upload-icon">
+        ⬆
+    </div>
+
+    <h2>Upload Surveillance Video</h2>
+
+    <p>Drag & Drop or Click to Upload</p>
+
+    <input
+        type="file"
+        name="file"
+        id="videoInput"
+        accept="video/*"
+        required
+    >
+
+</label>
+
+<!-- VIDEO PREVIEW -->
+
+<div class="video-preview" id="previewBox">
+
+    <video id="videoPreview" controls></video>
+
+</div>
+
+<!-- BUTTON -->
+
+<button type="submit" class="upload-btn">
+    Start AI Detection
+</button>
+
+</form>
+
+<!-- RESULT -->
+
+<div class="result-box">
+
+    <h2>Detection Result</h2>
+
+    <div class="result-text">
+
+        {{ result if result else "Upload a surveillance video to view AI detection results." }}
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+    © 2026 VisionGuard AI | Video Anomaly Detection System
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
